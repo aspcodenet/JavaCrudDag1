@@ -1,5 +1,7 @@
 package se.systementor.javacruddag1.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -9,8 +11,13 @@ public class Team {
     private int foundedYear;
     private String city;
 
+    @JsonProperty("players")
     private ArrayList<Player> players = new ArrayList<>();
 
+
+
+    public Team(){
+    }
     public Team(UUID id, String name){
         this.id = id;
         this.name = name;
@@ -46,5 +53,13 @@ public class Team {
 
     public void addPlayer(Player player) {
         players.add(player);
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 }
